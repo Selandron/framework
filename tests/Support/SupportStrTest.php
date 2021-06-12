@@ -414,6 +414,12 @@ class SupportStrTest extends TestCase
         $this->assertSame('foo-_bar', Str::snake('Foo-Bar'));
         $this->assertSame('foo__bar', Str::snake('Foo_Bar'));
         $this->assertSame('żółtałódka', Str::snake('ŻółtaŁódka'));
+        // test with digits inside
+        $this->assertSame('foo_bar_1', Str::snake('foo-bar-1'));
+        $this->assertSame('foo_1_bar', Str::snake('foo-1-bar'));
+        $this->assertSame('foo_bar_1', Str::snake('fooBar1'));
+        $this->assertSame('foo_1_bar', Str::snake('foo1Bar'));
+        $this->assertSame('foo_bar_1', Str::snake('foo bar  1'));
     }
 
     public function testStudly()
